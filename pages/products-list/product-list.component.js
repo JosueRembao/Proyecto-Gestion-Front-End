@@ -1,9 +1,8 @@
 'use strict';
 
-angular.
-module('productList')
+angular.module('productList', [])
     .component('productList', {
-        templateUrl: 'pages/products/product-list.html',
+        templateUrl: 'pages/products-list/product-list.html',
         controller: function ProductListController() {
             this.products = [{
                     Name: "Producto1",
@@ -14,6 +13,5 @@ module('productList')
                     Valor: 600
                 }
             ];
-
         }
     });
