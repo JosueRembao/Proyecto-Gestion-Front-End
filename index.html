@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="puntoDeVenta" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,9 +10,10 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.module.js"></script>
 
-
-
+    <script src="pages/products/product-list.component.js"></script>
+    <script src="pages/products/product-list.module.js"></script>
 
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link href="assets/css/dashboard.css" rel="stylesheet">
@@ -97,6 +98,7 @@
             </nav>
 
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <product-list></product-list>
                 <h1>Dashboard</h1>
 
                 <section class="row text-center placeholders">
