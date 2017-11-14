@@ -1,3 +1,5 @@
 'use strict';
 
-angular.module('puntoDeVenta', []);
+angular.module('puntoDeVenta', [
+    'productList'
+]);
