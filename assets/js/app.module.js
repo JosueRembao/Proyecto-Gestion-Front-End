@@ -1,5 +1,8 @@
 'use strict';
 
 angular.module('puntoDeVenta', [
-    'productList'
+    'productList',
+    'providerList',
+    'reports',
+    'returns'
 ]);
