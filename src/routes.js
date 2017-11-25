@@ -10,7 +10,17 @@
     $stateProvider
       .state("products", {
         url: '/products',
-        template: "<product-list></product-list>"
+        templateUrl: "../pages/products-list/product-list.html",
+        controller: "ProductListController as productList",
+        resolve: {
+          products: [
+            "ProductDataService",
+            function(ProductDataService) {
+              console.log(ProductDataService.getAllProducts());
+              return ProductDataService.getAllProducts();
+            }
+          ]
+        }
       })
       .state("providers", {
         url: '/providers',

@@ -6,6 +6,7 @@
       'productList',
       'providerList',
       'reports',
-      'returns'
+      'returns',
+      'data'
     ]);
 })();
