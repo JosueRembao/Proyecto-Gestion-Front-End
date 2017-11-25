@@ -13,5 +13,9 @@
         url: '/',
         templateUrl: "src/shared/test.html"
       })
+      .state("products", {
+        url: '/products',
+        templateUrl: '../productos.html'
+      })
   }
 })();
