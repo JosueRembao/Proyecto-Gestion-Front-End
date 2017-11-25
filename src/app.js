@@ -4,8 +4,8 @@
     .module('main', [
       'ui.router',
       'productList',
-      // 'providerList',
-      // 'reports',
-      // 'returns'
+      'providerList',
+      'reports',
+      'returns'
     ]);
 })();
