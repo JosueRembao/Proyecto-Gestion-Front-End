@@ -29,10 +29,10 @@
       <div class="stretchRight">
         <ul class="nav nav-pills flex-column">
           <li class="nav-item">
-            <a class="nav-link" ui-sref-active="active" ui-sref="sales">Ventas<span class="sr-only">(current)</span></a>
-          </li>
+            <a class="nav-link" ng-class="{active: $state.includes('sales')}"  ui-sref="sales">Ventas<span class="sr-only">(current)</span></a>
+          </li> <!-- ui-sref-active="active" -->
           <li class="nav-item">
-            <a class="nav-link" ui-sref-active="active" ui-sref="inventario.dashboard">Inventario</a>
+            <a class="nav-link" ng-class="{active: $state.includes('inventario')}" ui-sref="inventario.dashboard">Inventario</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Editar Productos</a>

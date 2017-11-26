@@ -15,14 +15,14 @@
       </button>
     </div> <!-- col-md-2 -->
   </div> <!--row -->
-
-  <table class="table">
-    <thead>
+  <br>
+  <table class="table ">
+    <thead class="thead-dark">
     <tr>
       <th scope="col">Producto</th>
       <th scope="col">Cantidad</th>
       <th scope="col">Precio</th>
-      <!--<th scope="col">Categoría</th>-->
+      <th scope="col">Categoría</th>
     </tr>
     </thead>
     <tbody ng-repeat="product in productList.products">
@@ -30,6 +30,7 @@
       <td>{{product.nombre}}</td>
       <td>{{product.cantidad}}</td>
       <td>{{product.precioVenta}}</td>
+      <td></td>
     </tr>
     </tbody>
   </table>

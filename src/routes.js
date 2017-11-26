@@ -1,6 +1,10 @@
 (function () {
   "use strict";
-  angular.module("main").config(RoutesConfig);
+  angular.module("main")
+    .config(RoutesConfig)
+    .run(function($rootScope, $state) {
+      $rootScope.$state = $state;
+    });
 
   RoutesConfig.$inject = ["$stateProvider", "$urlRouterProvider"];
 
