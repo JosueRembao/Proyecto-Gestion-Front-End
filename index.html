@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link href="assets/css/dashboard.css" rel="stylesheet">
   <link href="assets/css/animations.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
       <div class="stretchRight">
         <ul class="nav nav-pills flex-column">
           <li class="nav-item">
-            <a class="nav-link" ui-sref-active="active" ui-sref="box">Caja<span class="sr-only">(current)</span></a>
+            <a class="nav-link" ui-sref-active="active" ui-sref="sales">Ventas<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" ui-sref-active="active" ui-sref="products">Productos</a>
@@ -61,21 +62,24 @@
 
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
 
-       <!--<h1>Dashboard</h1>-->
       <ui-view></ui-view>
     </main>
   </div>
 </div>
 
 
-<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
-<!--<script src="assets/js/bootstrap.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
 
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/angular-ui-router.min.js"></script>
 
 <!-- Modules -->
 <script src="src/app.js"></script>
+
+<!-- run file -->
+<script src="src/run.js"></script>
+
 
 <!--Routes-->
 <script src="src/routes.js"></script>
@@ -99,6 +103,8 @@
 <script src="pages/returns/returns.module.js"></script>
 <script src="pages/returns/returns.component.js"></script>
 
+<!--Ventas-->
+<script src="pages/sales/sales.controller.js"></script>
 <!--DATA MODULE-->
 <script src="src/data.module.js"></script>
 <script src="src/utils/products.data.service.js"></script>

@@ -5,7 +5,7 @@
   RoutesConfig.$inject = ["$stateProvider", "$urlRouterProvider"];
 
   function RoutesConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/sales");
 
     $stateProvider
       .state("products", {
@@ -34,9 +34,9 @@
         url: '/returns',
         template: "<returns></returns>"
       })
-      .state("box", {
-        url: '/box',
-        template: "<h1>Caja</h1>"
+      .state("sales", {
+        url: '/sales',
+        templateUrl: "../pages/sales/sales.html"
       })
   }
 })();
