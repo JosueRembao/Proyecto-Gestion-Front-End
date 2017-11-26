@@ -3,7 +3,7 @@
   angular
     .module("data")
     .service("ProductDataService", ProductDataService)
-    .constant("ApiBasePath", "http://0.0.0.0:9000/api");
+    .constant("ApiBasePath", "http://127.0.0.1:8080/api");
 
   ProductDataService.$inject = ["$http", "ApiBasePath"];
   function ProductDataService($http, ApiBasePath) {

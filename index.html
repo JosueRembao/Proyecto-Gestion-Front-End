@@ -32,7 +32,7 @@
             <a class="nav-link" ui-sref-active="active" ui-sref="sales">Ventas<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" ui-sref-active="active" ui-sref="products">Productos</a>
+            <a class="nav-link" ui-sref-active="active" ui-sref="inventario">Inventario</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Editar Productos</a>
@@ -76,38 +76,34 @@
 
 <!-- Modules -->
 <script src="src/app.js"></script>
-
-<!-- run file -->
-<script src="src/run.js"></script>
-
+<!--DATA MODULE-->
+<script src="src/data.module.js"></script>
+<script src="src/utils/products.data.service.js"></script>
 
 <!--Routes-->
 <script src="src/routes.js"></script>
 
-<!--<script src="assets/js/app.module.js"></script>-->
 
 <!--productos-->
-<script src="pages/products-list/product-list.module.js"></script>
-<script src="pages/products-list/product-list.component.js"></script>
-<script src="pages/products-list/product-list.controller.js"></script>
+<script src="src/components/products-list/product-list.module.js"></script>
+<script src="src/components/products-list/product-list.component.js"></script>
+<script src="src/components/products-list/product-list.controller.js"></script>
 
 <!--proveedores-->
-<script src="pages/providers-list/provider-list.module.js"></script>
-<script src="pages/providers-list/provider-list.component.js"></script>
+<script src="src/components/providers-list/provider-list.module.js"></script>
+<script src="src/components/providers-list/provider-list.component.js"></script>
 
 <!--reportes-->
-<script src="pages/reports/reports.module.js"></script>
-<script src="pages/reports/reports.component.js"></script>
+<script src="src/components/reports/reports.module.js"></script>
+<script src="src/components/reports/reports.component.js"></script>
 
 <!--devoluciones-->
-<script src="pages/returns/returns.module.js"></script>
-<script src="pages/returns/returns.component.js"></script>
+<script src="src/components/returns/returns.module.js"></script>
+<script src="src/components/returns/returns.component.js"></script>
 
 <!--Ventas-->
-<script src="pages/sales/sales.controller.js"></script>
-<!--DATA MODULE-->
-<script src="src/data.module.js"></script>
-<script src="src/utils/products.data.service.js"></script>
+<script src="src/components/sales/sales.controller.js"></script>
+
 </body>
 
 </html>

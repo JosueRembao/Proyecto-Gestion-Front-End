@@ -8,9 +8,9 @@
     $urlRouterProvider.otherwise("/sales");
 
     $stateProvider
-      .state("products", {
-        url: '/products',
-        templateUrl: "../pages/products-list/product-list.html",
+      .state("inventario", {
+        url: '/inventario',
+        templateUrl: "src/components/products-list/product-list.html",
         controller: "ProductListController as productList",
         resolve: {
           products: [
@@ -36,7 +36,11 @@
       })
       .state("sales", {
         url: '/sales',
-        templateUrl: "../pages/sales/sales.html"
+        templateUrl: "src/components/sales/sales.html",
+      })
+      .state("openRegister", {
+        url: '/open-register',
+        templateUrl: "src/components/register/register.form.html",
       })
   }
 })();
