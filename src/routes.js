@@ -7,10 +7,22 @@
   function RoutesConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/sales");
 
+    $urlRouterProvider.when("/inventario/", "/inventario/dashboard");
+    $urlRouterProvider.when("/inventario", "/inventario/dashboard");
+
     $stateProvider
       .state("inventario", {
         url: '/inventario',
-        templateUrl: "src/components/products-list/product-list.html",
+        abstract: true,
+        templateUrl: "src/components/inventory/inventory.html",
+      })
+      .state("inventario.dashboard", {
+        url: '/dashboard',
+        templateUrl: '/src/components/inventory/inventory.dashboard.html'
+      })
+      .state("inventario.productos", {
+        url: '/productos',
+        templateUrl: '/src/components/inventory/inventory.products.html',
         controller: "ProductListController as productList",
         resolve: {
           products: [

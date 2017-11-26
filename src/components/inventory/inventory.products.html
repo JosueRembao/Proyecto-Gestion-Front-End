@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Buscar producto" aria-label="Search for...">
+        <span class="input-group-btn">
+            <button class="btn btn-info" type="button">Buscar</button>
+          </span>
+      </div>
+    </div> <!-- col-md-10 -->
+    <div class="col-md-2">
+      <button class="btn btn-success">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Nuevo producto
+      </button>
+    </div> <!-- col-md-2 -->
+  </div> <!--row -->
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Producto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Precio</th>
+      <!--<th scope="col">Categoría</th>-->
+    </tr>
+    </thead>
+    <tbody ng-repeat="product in productList.products">
+    <tr>
+      <td>{{product.nombre}}</td>
+      <td>{{product.cantidad}}</td>
+      <td>{{product.precioVenta}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div> <!-- container -->
