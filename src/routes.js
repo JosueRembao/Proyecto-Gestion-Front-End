@@ -22,11 +22,11 @@
       })
       .state("inventario.dashboard", {
         url: '/dashboard',
-        templateUrl: '/src/components/inventory/inventory.dashboard.html'
+        templateUrl: 'src/components/inventory/inventory.dashboard.html'
       })
       .state("inventario.productos", {
         url: '/productos',
-        templateUrl: '/src/components/inventory/inventory.products.html',
+        templateUrl: 'src/components/inventory/inventory.products.html',
         controller: "ProductListController as productList",
         resolve: {
           products: [
@@ -37,6 +37,10 @@
             }
           ]
         }
+      })
+      .state("inventario.addProducts", {
+        url: '/add-productos',
+        templateUrl: 'src/components/inventory/inventory.add.product.html',
       })
       .state("providers", {
         url: '/providers',

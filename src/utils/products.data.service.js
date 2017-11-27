@@ -17,7 +17,6 @@
         url: ApiBasePath + "/products"
       })
         .then(result => {
-          console.log(result.data);
           return result.data;
         })
         .catch(error => console.log(error));

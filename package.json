@@ -1,0 +1,20 @@
+{
+  "name": "proyecto-gestion-front-end",
+  "version": "1.0.0",
+  "description": "Github Page: https://josuerembao.github.io/Proyecto-Gestion-Front-End/",
+  "main": "index.js",
+  "scripts": {
+    "start" : "browser-sync start --directory --server --files '*.css, *.html, *.js' --https",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosueRembao/Proyecto-Gestion-Front-End.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosueRembao/Proyecto-Gestion-Front-End/issues"
+  },
+  "homepage": "https://github.com/JosueRembao/Proyecto-Gestion-Front-End#readme"
+}
