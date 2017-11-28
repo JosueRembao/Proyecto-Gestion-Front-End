@@ -1,15 +1,39 @@
 <div class="container">
-  <!--Productos e inventario-->
-  <div class="row">
-    <div class="col-md-1">
-      <button class="btn btn-info">Guardar</button>
-    </div>
-    <div class="col-md-2">
-      <button class="btn btn-info">Guardar y añadir más</button>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-  </div>
+	
+	<form ng-submit="productList.submit()">
+		<!--Productos e inventario-->
+		<div class="row">
+			<div class="col-xs-2">
+				<input class="btn btn-info" type="submit" value="Guardar"/>
+			</div>
+			<div class="col">
+				<button class="btn btn-info" disabled>Guardar y añadir más</button>
+			</div>
+		</div><!--row-->
+		<hr>
+		
+		<!--<div class="row">-->
+			<div class="form-group row">
+				<label for="nombre" class="col-sm-3 col-form-label">Nombre del producto</label>
+				<div class="col-sm-3">
+					<input ng-model="productList.nombre" class="form-control" id="nombre" placeholder="Nombre del producto">
+				</div>
+				<label for="cantidad" class="col-md-3 col-form-label">Añadir inventorio</label>
+				<div class="col-md-3">
+					<input type="number" ng-model="productList.cantidad" class="form-control" id="cantidad" placeholder="Cantidad de productos">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="precio-venta" class="col-md-3 col-form-label">Precio de venta</label>
+				<div class="col-md-3">
+					<input type="number" ng-model="productList.precioVenta" class="form-control" id="precio-venta" placeholder="Precio de venta">
+				</div>
 
-</div>
+				<label for="precio-compra" class="col-md-3 col-form-label">Precio de compra</label>
+				<div class="col-md-3">
+					<input type="number" ng-model="productList.precioCompra" class="form-control" id="precio-compra" placeholder="Precio de compra">
+				</div>
+			</div>
+		<!--</div> &lt;!&ndash;row&ndash;&gt;-->
+	</form>
+</div><!--container-->

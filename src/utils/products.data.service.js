@@ -3,7 +3,7 @@
   angular
     .module("data")
     .service("ProductDataService", ProductDataService)
-    .constant("ApiBasePath", "http://127.0.0.1:8080/api");
+    .constant("ApiBasePath", "http://127.0.0.1:8080/api/products");
 
   ProductDataService.$inject = ["$http", "ApiBasePath"];
   function ProductDataService($http, ApiBasePath) {
@@ -14,7 +14,7 @@
       //obtener todas los productos
       return $http({
         method: "GET",
-        url: ApiBasePath + "/products"
+        url: ApiBasePath
       })
         .then(result => {
           return result.data;
@@ -22,17 +22,24 @@
         .catch(error => console.log(error));
     };
 
-    /*service.getItemsForCategory = categoryShortName => {
-      return $http({
-        method: "GET",
-        url: (ApiBasePath + "/menu_items.json"),
-        params:{ category: categoryShortName}
-      })
-        .then(result => {
-          console.log(result.data);
-          return result.data;
-        })
-        .catch(error => console.log(error));
-    };*/
+		service.addProduct = (nombre, cantidad, precioVenta, precioCompra)=> {
+			return $http({
+				method: "POST",
+				url: ApiBasePath,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				transformRequest: function(obj) {
+					var str = [];
+					for(var p in obj)
+						str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+					return str.join("&");
+				},
+				data: {nombre: nombre, cantidad: cantidad, precioVenta: precioVenta, precioCompra: precioCompra}
+			})
+				.then(result =>{
+					console.log(result.data);
+					return result.data ? "Se agrego producto con exito" : "Error"
+				})
+				.catch (error => console.log(error))
+		}
   }
 })();
