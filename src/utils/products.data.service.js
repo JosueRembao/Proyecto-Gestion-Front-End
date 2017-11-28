@@ -27,12 +27,6 @@
 				method: "POST",
 				url: ApiBasePath,
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				transformRequest: function(obj) {
-					var str = [];
-					for(var p in obj)
-						str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-					return str.join("&");
-				},
 				data: {nombre: nombre, cantidad: cantidad, precioVenta: precioVenta, precioCompra: precioCompra}
 			})
 				.then(result =>{

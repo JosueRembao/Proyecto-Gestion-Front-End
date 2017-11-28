@@ -7,7 +7,7 @@
 
   ProductListController.$inject = [ "products", "ProductDataService", '$scope'];
 
-  function ProductListController(products, ProductDataService, $scope) {
+  function ProductListController(products, ProductDataService) {
     let productList = this;
     productList.test = 'test✌️';
     productList.products = products;

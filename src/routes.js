@@ -39,6 +39,9 @@
 			.state("inventario.addProducts", {
 				url: '/add-productos',
 				templateUrl: 'src/components/inventory/inventory.add.product.html',
+			}).state("inventario.categorias", {
+				url: '/categories',
+				templateUrl: 'src/components/categories/categories.html'
 			})
 			.state("providers", {
 				url: '/providers',
