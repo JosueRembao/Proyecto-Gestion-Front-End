@@ -13,6 +13,8 @@
 
 		$urlRouterProvider.when("/inventario/", "/inventario/dashboard");
 		$urlRouterProvider.when("/inventario", "/inventario/dashboard");
+		$urlRouterProvider.when("/sales", '/sales/register');
+		$urlRouterProvider.when("/sales/", '/sales/register');
 
 		$stateProvider
 			.state("inventario", {
@@ -35,14 +37,25 @@
 			.state("inventario.productos", {
 				url: '/productos',
 				templateUrl: 'src/components/inventory/inventory.products.html',
+			}).state("inventario.producto",{
+				url: '/producto/:productId',
+				templateUrl: 'src/components/inventory/inventory.product.html',
+				params: {id: null},
+				resolve: {
+					product: ['$stateParams', 'ProductDataService', function($stateParams, ProductDataService){
+						return ProductDataService.getProduct($stateParams.productId);
+					}]
+				},
+				controller: "ProductController as productCtrl"
+				
 			})
 			.state("inventario.addProducts", {
 				url: '/add-productos',
 				templateUrl: 'src/components/inventory/inventory.add.product.html',
 			}).state("inventario.categorias", {
-				url: '/categories',
-				templateUrl: 'src/components/categories/categories.html'
-			})
+			url: '/categories',
+			templateUrl: 'src/components/categories/categories.html'
+		})
 			.state("providers", {
 				url: '/providers',
 				template: "<provider-list></provider-list>"
@@ -58,8 +71,11 @@
 			.state("sales", {
 				url: '/sales',
 				templateUrl: "src/components/sales/sales.html",
+			}).state('sales.register', {
+				url: '/register',
+				templateUrl: 'src/components/register/register.html'
 			})
-			.state("openRegister", {
+			.state("sales.openRegister", {
 				url: '/open-register',
 				templateUrl: "src/components/register/register.form.html",
 			})

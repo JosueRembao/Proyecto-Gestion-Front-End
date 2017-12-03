@@ -9,10 +9,10 @@
       </div>
     </div> <!-- col-md-10 -->
     <div class="col-md-2">
-      <button class="btn btn-success">
+      <a ui-sref="inventario.addProducts" class="btn btn-success">
         <i class="fa fa-plus" aria-hidden="true"></i>
         Nuevo producto
-      </button>
+      </a>
     </div> <!-- col-md-2 -->
   </div> <!--row -->
   <br>
@@ -21,13 +21,13 @@
     <tr>
       <th scope="col">Producto</th>
       <th scope="col">Cantidad</th>
-      <th scope="col">Precio</th>
+      <th scope="col">Precio venta</th>
       <th scope="col">Categoría</th>
     </tr>
     </thead>
     <tbody ng-repeat="product in productList.products">
     <tr>
-      <td>{{product.nombre}}</td>
+      <td><a ui-sref="inventario.producto({productId: product.id})" ng-click="productList.getProduct(product)">{{product.nombre}}</a></td>
       <td>{{product.cantidad}}</td>
       <td>{{product.precioVenta}}</td>
       <td></td>

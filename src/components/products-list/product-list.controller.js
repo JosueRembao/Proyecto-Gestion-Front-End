@@ -13,16 +13,15 @@
     productList.products = products;
     
     //Variables para el formulario de agregar productos
-    productList.nombre = '';
-		productList.cantidad = 0;
-		productList.precioCompra = 0;
-		productList.precioVenta = 0;
-    
+    productList.nombre = 'Borderlands';
+		productList.cantidad = 10;
+		productList.precioCompra = 190;
+		productList.precioVenta = 200;
     productList.submit = () => {
     	console.log(`${productList.nombre} ${productList.cantidad} ${productList.precioCompra} ${productList.precioVenta}`);
 			ProductDataService.addProduct(this.nombre, this.cantidad, this.precioVenta, this.precioCompra);
-			console.log('subiendo');
 		}
+		
   }
 
 
