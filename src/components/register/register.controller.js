@@ -5,16 +5,15 @@
 		.module("main")
 		.controller("RegisterController", RegisterController);
 
-	RegisterController.$inject = ["RegisterDataService"];
-	function RegisterController(RegisterDataService) {
+	RegisterController.$inject = ["RegisterDataService", "$transitions"];
+
+	function RegisterController(RegisterDataService, $transitions) {
 		let registerCtrl = this;
-		registerCtrl.test = 'funciona';
-		
+		registerCtrl.test = 'funciona'
 		registerCtrl.montoInicial = 0;
-		
-		registerCtrl.openRegister = () =>{
+
+		registerCtrl.openRegister = () => {
 			let isActive = true;
-			// console.log('cambiano caja a ' + isActive + ' con ' + this.montoInicial);
 			RegisterDataService.addRegister(isActive, this.montoInicial);
 		}
 	}

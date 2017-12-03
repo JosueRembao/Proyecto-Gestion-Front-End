@@ -91,16 +91,49 @@
 			.state("sales", {
 				url: '/sales',
 				templateUrl: "src/components/sales/sales.html",
+				// abstract: true
 			})
 			.state('sales.register', {
 				url: '/register',
 				templateUrl: 'src/components/register/register.html',
+				resolve: {
+					registers: ['$stateParams', 'RegisterDataService', function ($stateParams, RegisterDataService) {
+						return RegisterDataService.getRegisters();
+					}]
+				},
+				controller: function ($scope, $transitions, registers) {
+					let registerMannagerCtrl = $scope;
+					registerMannagerCtrl.test = 'funciona'
+					registerMannagerCtrl.registers = registers;
+
+					$transitions.onSuccess({}, function (transition) {
+						const transitionName = transition.to().name;
+						const registerIsActive = registerMannagerCtrl.registers[0].isActive;
+						console.log('register is actuve? :' + registerIsActive);
+						console.log('name: '+ transitionName);
+						
+						if (registerIsActive && transitionName === "sales.openRegister"){
+							console.log('deberia de cambiar')
+							return transition.router.stateService.target('sales.dashboard');
+						}
+						console.log(
+							"Successful Transition from " + transition.from().name +
+							" to " + transition.to().name
+						);
+					});
+				}
+				// controller: "RegisterMannagerController registerMannagerCtrl"
 			})
 			.state("sales.openRegister", {
 				url: '/open-register',
 				templateUrl: "src/components/register/register.form.html",
-				controller: 'RegisterController as registerCtrl'
+				controller: 'RegisterController as registerCtrl',
 			})
+			.state("sales.dashboard", {
+				url: '/dashboard',
+				templateUrl: 'src/components/sales/sales.dashboard.html',
+				// controller: 'RegisterController as registerCtrl',
+			});
 	}
 })();
 

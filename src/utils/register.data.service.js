@@ -11,7 +11,7 @@
 		let url = `${ApiBasePath}register`;
 
 		//this method should return a promise which is a result of suing $http service
-		service.getRegister = () => {
+		service.getRegisters = () => {
 			return $http({
 				method: "GET",
 				url
