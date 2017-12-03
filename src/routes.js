@@ -67,25 +67,31 @@
 				}
 			})
 			.state("inventario.producto", {
-			url: '/producto/:productId',
-			templateUrl: 'src/components/inventory/inventory.product.html',
-			params: {id: null},
-			resolve: {
-				product: ['$stateParams', 'ProductDataService', function ($stateParams, ProductDataService) {
-					console.log('resolviendo inventario.producto')
-					return ProductDataService.getProduct($stateParams.productId);
-				}]
-			},
-			controller: "ProductController as productCtrl"
-
-		})
+				url: '/producto/:productId',
+				templateUrl: 'src/components/inventory/inventory.product.html',
+				params: {id: null},
+				controller: "ProductController as productCtrl",
+				resolve: {
+					product: ['$stateParams', 'ProductDataService', function ($stateParams, ProductDataService) {
+						console.log('resolviendo inventario.producto')
+						return ProductDataService.getProduct($stateParams.productId);
+					}]
+				}
+			})
 			.state("inventario.addProducts", {
 				url: '/add-productos',
 				templateUrl: 'src/components/inventory/inventory.add.product.html',
-			}).state("inventario.categorias", {
-			url: '/categories',
-			templateUrl: 'src/components/categories/categories.html'
-		})
+				controller: "ProductController as productCtrl",
+				resolve: {
+					product:  () =>{
+						return null;
+					}
+				}
+			})
+			.state("inventario.categorias", {
+				url: '/categories',
+				templateUrl: 'src/components/categories/categories.html'
+			})
 			.state("providers", {
 				url: '/providers',
 				template: "<provider-list></provider-list>"

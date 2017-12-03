@@ -12,15 +12,7 @@
     productList.test = 'test✌️';
     productList.products = products;
 		
-    for (const prop in productList.products) {
-			console.log(`obj.${prop} = ${JSON.stringify(productList.products[prop])}`);
-		}
-		productList.producto = {
-			nombre: 'Borderlands',
-			cantidad: 10,
-			precioCompra: 100,
-			precioVenta: 200
-		};
+
 		//
 		// console.log('deberia recargar ' + $state.current.name);
 		// console.log("valor de productos"+ products )

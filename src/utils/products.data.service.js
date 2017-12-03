@@ -45,9 +45,6 @@
 				url: `${url}/${id}`
 			})
 				.then(result => {
-					if (result.satus == 204){
-						alert('eliminado con exito')
-					}
 					return result.status;
 				})
 				.catch(error => console.log(error));
