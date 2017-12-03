@@ -23,7 +23,7 @@
 		productCtrl.cantidad = productCtrl.product.cantidad;
 		productCtrl.precioCompra = productCtrl.product.precioCompra;
 		productCtrl.precioVenta = productCtrl.product.precioVenta;
-		const id = productCtrl.id;
+		const id = productCtrl.product.id;
 
 		productCtrl.actualizar = () => {
 			ProductDataService.updateProduct(id, this.nombre, this.cantidad, this.precioVenta, this.precioCompra);
