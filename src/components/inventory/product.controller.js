@@ -5,29 +5,52 @@
 		.module("main")
 		.controller("ProductController", ProductController)
 
-	ProductController.$inject = [ "product", "ProductDataService", "$state"];
+	ProductController.$inject = ["product", "ProductDataService", "$state"];
 
 	function ProductController(product, ProductDataService, $state) {
 		let productCtrl = this;
 		productCtrl.test = 'test✌️';
-		productCtrl.product = product;
-
+		productCtrl.product = product || {
+			nombre: 'Borderlands',
+			cantidad: 10,
+			precioCompra: 100,
+			precioVenta: 200
+		};
+    
+		
 		//Variables para el formulario de agregar productos
-		productCtrl.nombre = product.nombre;
-		productCtrl.cantidad = product.cantidad;
-		productCtrl.precioCompra = product.precioCompra;
-		productCtrl.precioVenta = product.precioVenta;
-		const id = product.id;
+		productCtrl.nombre = productCtrl.product.nombre;
+		productCtrl.cantidad = productCtrl.product.cantidad;
+		productCtrl.precioCompra = productCtrl.product.precioCompra;
+		productCtrl.precioVenta = productCtrl.product.precioVenta;
+		const id = productCtrl.id;
 
 		productCtrl.actualizar = () => {
 			ProductDataService.updateProduct(id, this.nombre, this.cantidad, this.precioVenta, this.precioCompra);
 		}
 
 		productCtrl.eliminar = () => {
-			ProductDataService.deleteProduct(id);
+			let promise = ProductDataService.deleteProduct(id);
+
+			if (!promise) {
+				return
+			}
+
+			promise.then(function (result) {
+					alert('Producto eliminado con exito');
+					$state.transitionTo('inventario.productos', null, {reload: true, notify:true});
+				},
+				function (error) {
+					alert('error '+ error);
+				})
 			// $state.go('inventario.productos', {});
+			// $state.reload();
+			// $state.transitionTo('inventario.productos', null, {reload: true, notify:true});
+		}
+
+		productCtrl.submit = () => {
+			ProductDataService.addProduct(this.nombre, this.cantidad, this.precioVenta, this.precioCompra);
 			$state.reload();
-			$state.transitionTo('inventario.productos', null, {reload: true, notify:true});
 		}
 
 	}
