@@ -5,9 +5,9 @@
 		.module("main")
 		.controller("ProductController", ProductController)
 
-	ProductController.$inject = [ "product", "ProductDataService"];
+	ProductController.$inject = [ "product", "ProductDataService", "$state"];
 
-	function ProductController(product, ProductDataService) {
+	function ProductController(product, ProductDataService, $state) {
 		let productCtrl = this;
 		productCtrl.test = 'test✌️';
 		productCtrl.product = product;
@@ -21,6 +21,13 @@
 
 		productCtrl.actualizar = () => {
 			ProductDataService.updateProduct(id, this.nombre, this.cantidad, this.precioVenta, this.precioCompra);
+		}
+
+		productCtrl.eliminar = () => {
+			ProductDataService.deleteProduct(id);
+			// $state.go('inventario.productos', {});
+			$state.reload();
+			$state.transitionTo('inventario.productos', null, {reload: true, notify:true});
 		}
 
 	}

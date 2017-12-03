@@ -1,12 +1,11 @@
 <div class="container">
-	<form ng-submit="productCtrl.actualizar()"> 
 		<!--Productos e inventario-->
 		<div class="row">
 			<div class="col-xs-2">
-				<input class="btn btn-info" type="submit" value="Guardar cambios"/>
+				<button class="btn btn-info" ng-click="productCtrl.actualizar()">Guardar cambios</button>
 			</div>
 			<div class="col">
-				<button class="btn btn-danger">Eliminar</button>
+				<button class="btn btn-danger" ng-click="productCtrl.eliminar()">Eliminar</button>
 			</div>
 		</div><!--row-->
 		<hr>
@@ -34,5 +33,4 @@
 			</div>
 		</div>
 		<!--</div> &lt;!&ndash;row&ndash;&gt;-->
-	</form>
 </div><!--container-->

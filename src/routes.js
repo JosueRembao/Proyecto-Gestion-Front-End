@@ -2,8 +2,21 @@
 	"use strict";
 	angular.module("main")
 		.config(RoutesConfig)
-		.run(function ($rootScope, $state) {
+		.run(function ($rootScope, $state, $stateParams) {
 			$rootScope.$state = $state;
+			$rootScope.$stateParams = $stateParams;
+		})
+		.config(function ($provide) {
+			$provide.decorator('$state', function ($delegate, $stateParams) {
+				$delegate.forceReload = function () {
+					return $delegate.go($delegate.current, $stateParams, {
+						reload: true,
+						inherit: false,
+						notify: true
+					});
+				};
+				return $delegate;
+			});
 		});
 
 	RoutesConfig.$inject = ["$stateProvider", "$urlRouterProvider"];
@@ -27,7 +40,10 @@
 						"ProductDataService", (ProductDataService) => {
 							return ProductDataService.getAllProducts();
 						}
-					]
+					],
+					product:  () =>{
+						return null;
+					}
 				}
 			})
 			.state("inventario.dashboard", {
@@ -37,18 +53,20 @@
 			.state("inventario.productos", {
 				url: '/productos',
 				templateUrl: 'src/components/inventory/inventory.products.html',
-			}).state("inventario.producto",{
-				url: '/producto/:productId',
-				templateUrl: 'src/components/inventory/inventory.product.html',
-				params: {id: null},
-				resolve: {
-					product: ['$stateParams', 'ProductDataService', function($stateParams, ProductDataService){
-						return ProductDataService.getProduct($stateParams.productId);
-					}]
-				},
-				controller: "ProductController as productCtrl"
-				
 			})
+			.state("inventario.producto", {
+			url: '/producto/:productId',
+			templateUrl: 'src/components/inventory/inventory.product.html',
+			params: {id: null},
+			resolve: {
+				product: ['$stateParams', 'ProductDataService', function ($stateParams, ProductDataService) {
+					console.log('resolviendo hijo')
+					return ProductDataService.getProduct($stateParams.productId);
+				}]
+			},
+			controller: "ProductController as productCtrl"
+
+		})
 			.state("inventario.addProducts", {
 				url: '/add-productos',
 				templateUrl: 'src/components/inventory/inventory.add.product.html',
@@ -72,9 +90,9 @@
 				url: '/sales',
 				templateUrl: "src/components/sales/sales.html",
 			}).state('sales.register', {
-				url: '/register',
-				templateUrl: 'src/components/register/register.html'
-			})
+			url: '/register',
+			templateUrl: 'src/components/register/register.html'
+		})
 			.state("sales.openRegister", {
 				url: '/open-register',
 				templateUrl: "src/components/register/register.form.html",

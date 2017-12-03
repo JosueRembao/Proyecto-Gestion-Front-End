@@ -19,6 +19,7 @@
         url
       })
         .then(result => {
+        	console.log('obteniendo todos los items')
           return result.data;
         })
         .catch(error => console.log(error));
@@ -31,8 +32,22 @@
 				url: `${url}/${id}`
 			})
 				.then(result => {
-					console.log(result.data)
 					return result.data;
+				})
+				.catch(error => console.log(error));
+		};
+
+		service.deleteProduct = (id) => {
+			//obtener todas los productos
+			return $http({
+				method: "DELETE",
+				url: `${url}/${id}`
+			})
+				.then(result => {
+					if (result.satus == 204){
+						alert('eliminado con exito')
+					}
+					return result.status;
 				})
 				.catch(error => console.log(error));
 		};
@@ -97,5 +112,6 @@
         	alert(error.statusText + ' '+ error.data.message);
         });
     };
+		
   }
 })();
