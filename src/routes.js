@@ -34,17 +34,6 @@
 				url: '/inventario',
 				abstract: true,
 				templateUrl: "src/components/inventory/inventory.html",
-				// controller: "ProductListController as productList",
-				// resolve: {
-				// 	product: () => {
-				// 		console.log('resolviendo porducto en padre');
-				// 		return {};
-				// 	},
-				// 	products: () => {
-				// 		console.log('resolviendo porductos en padre');
-				// 		return [];
-				// 	}
-				// }
 			})
 			.state("inventario.dashboard", {
 				url: '/dashboard',
@@ -57,13 +46,9 @@
 				resolve: {
 					products: [
 						"ProductDataService", (ProductDataService) => {
-							console.log('resolviendo porductos en inventario.productos');
 							return ProductDataService.getAllProducts();
 						}
-					],
-					// product:  () =>{
-					// 	return null;
-					// }
+					]
 				}
 			})
 			.state("inventario.producto", {
@@ -73,7 +58,6 @@
 				controller: "ProductController as productCtrl",
 				resolve: {
 					product: ['$stateParams', 'ProductDataService', function ($stateParams, ProductDataService) {
-						console.log('resolviendo inventario.producto')
 						return ProductDataService.getProduct($stateParams.productId);
 					}]
 				}
@@ -83,7 +67,7 @@
 				templateUrl: 'src/components/inventory/inventory.add.product.html',
 				controller: "ProductController as productCtrl",
 				resolve: {
-					product:  () =>{
+					product: () => {
 						return null;
 					}
 				}
@@ -107,13 +91,15 @@
 			.state("sales", {
 				url: '/sales',
 				templateUrl: "src/components/sales/sales.html",
-			}).state('sales.register', {
-			url: '/register',
-			templateUrl: 'src/components/register/register.html'
-		})
+			})
+			.state('sales.register', {
+				url: '/register',
+				templateUrl: 'src/components/register/register.html',
+			})
 			.state("sales.openRegister", {
 				url: '/open-register',
 				templateUrl: "src/components/register/register.form.html",
+				controller: 'RegisterController as registerCtrl'
 			})
 	}
 })();

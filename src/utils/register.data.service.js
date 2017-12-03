@@ -8,10 +8,10 @@
 
 	function RegisterDataService($http, ApiBasePath) {
 		let service = this;
-		let url = `${ApiBasePath}/register`;
+		let url = `${ApiBasePath}register`;
+
 		//this method should return a promise which is a result of suing $http service
 		service.getRegister = () => {
-			//obtener todas los productos
 			return $http({
 				method: "GET",
 				url
@@ -22,16 +22,20 @@
 				.catch(error => console.log(error));
 		};
 
-		service.addRegister = (nombre, cantidad, precioVenta, precioCompra) => {
+		service.addRegister = (isActive, montoInicial) => {
 			return $http({
 				method: "POST",
 				url,
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				transformRequest: function(obj) {
+					var str = [];
+					for(var p in obj)
+						str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+					return str.join("&");
+				},
 				data: {
-					nombre: nombre,
-					cantidad: cantidad,
-					precioVenta: precioVenta,
-					precioCompra: precioCompra
+					isActive: isActive,
+					montoInicial: montoInicial,
 				}
 			})
 				.then(result => {
