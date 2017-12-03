@@ -5,7 +5,7 @@
 		.module("main")
 		.controller("ProductController", ProductController)
 
-	ProductController.$inject = [ "product", "ProductDataService", "$state"];
+	ProductController.$inject = ["product", "ProductDataService", "$state"];
 
 	function ProductController(product, ProductDataService, $state) {
 		let productCtrl = this;
@@ -24,10 +24,23 @@
 		}
 
 		productCtrl.eliminar = () => {
-			ProductDataService.deleteProduct(id);
+			let promise = ProductDataService.deleteProduct(id);
+
+			if (!promise) {
+				console.log('no hay promesa')
+				return
+			}
+
+			promise.then(function (result) {
+					alert('success, keep/do the changes');
+					$state.transitionTo('inventario.productos', null, {reload: true, notify:true});
+				},
+				function (error) {
+					alert('not successful, undo the changes');
+				})
 			// $state.go('inventario.productos', {});
-			$state.reload();
-			$state.transitionTo('inventario.productos', null, {reload: true, notify:true});
+			// $state.reload();
+			// $state.transitionTo('inventario.productos', null, {reload: true, notify:true});
 		}
 
 	}

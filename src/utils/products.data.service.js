@@ -19,7 +19,7 @@
         url
       })
         .then(result => {
-        	console.log('obteniendo todos los items')
+        	console.log('GET products')
           return result.data;
         })
         .catch(error => console.log(error));
@@ -32,6 +32,7 @@
 				url: `${url}/${id}`
 			})
 				.then(result => {
+					console.log('GET product with id')
 					return result.data;
 				})
 				.catch(error => console.log(error));

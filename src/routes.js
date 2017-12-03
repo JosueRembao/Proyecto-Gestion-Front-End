@@ -34,25 +34,37 @@
 				url: '/inventario',
 				abstract: true,
 				templateUrl: "src/components/inventory/inventory.html",
-				controller: "ProductListController as productList",
-				resolve: {
-					products: [
-						"ProductDataService", (ProductDataService) => {
-							return ProductDataService.getAllProducts();
-						}
-					],
-					product:  () =>{
-						return null;
-					}
-				}
+				// controller: "ProductListController as productList",
+				// resolve: {
+				// 	product: () => {
+				// 		console.log('resolviendo porducto en padre');
+				// 		return {};
+				// 	},
+				// 	products: () => {
+				// 		console.log('resolviendo porductos en padre');
+				// 		return [];
+				// 	}
+				// }
 			})
 			.state("inventario.dashboard", {
 				url: '/dashboard',
-				templateUrl: 'src/components/inventory/inventory.dashboard.html'
+				templateUrl: 'src/components/inventory/inventory.dashboard.html',
 			})
 			.state("inventario.productos", {
 				url: '/productos',
 				templateUrl: 'src/components/inventory/inventory.products.html',
+				controller: "ProductListController as productList",
+				resolve: {
+					products: [
+						"ProductDataService", (ProductDataService) => {
+							console.log('resolviendo porductos en inventario.productos');
+							return ProductDataService.getAllProducts();
+						}
+					],
+					// product:  () =>{
+					// 	return null;
+					// }
+				}
 			})
 			.state("inventario.producto", {
 			url: '/producto/:productId',
@@ -60,7 +72,7 @@
 			params: {id: null},
 			resolve: {
 				product: ['$stateParams', 'ProductDataService', function ($stateParams, ProductDataService) {
-					console.log('resolviendo hijo')
+					console.log('resolviendo inventario.producto')
 					return ProductDataService.getProduct($stateParams.productId);
 				}]
 			},
