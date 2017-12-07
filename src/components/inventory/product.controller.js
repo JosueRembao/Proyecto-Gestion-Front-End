@@ -11,10 +11,10 @@
 		let productCtrl = this;
 		productCtrl.test = 'test✌️';
 		productCtrl.product = product || {
-			nombre: 'Borderlands',
-			cantidad: 10,
-			precioCompra: 100,
-			precioVenta: 200
+			nombre: '',
+			cantidad: 0,
+			precioCompra: 0,
+			precioVenta: 0
 		};
     
 		
